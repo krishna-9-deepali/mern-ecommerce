@@ -72,7 +72,7 @@ const loginUser = async (req, res) => {
     //   secure: true,    // Ensures the cookie is sent over HTTPS
     //   sameSite: 'None' // Allows cross-site requests (required for PayPal redirects)
     // });
-    res.cookie("token", token, { httpOnly: true, secure: false }).json({
+    res.cookie("token", token, { httpOnly: true, secure: true }).json({
       success: true,
       message: "Logged in successfully",
       user: {
