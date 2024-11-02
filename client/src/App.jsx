@@ -30,7 +30,11 @@ function App() {
   const dispatch = useDispatch();
   console.log(user, isAuthenticated);
   useEffect(() => {
-    dispatch(checkAuth());
+    const token = JSON.parse(sessionStorage.getItem("token"));
+    // if (token) {
+    //   token = JSON.parse(token);
+    // }
+    dispatch(checkAuth(token));
   }, [dispatch]);
   // if (isLoading) return <div>Loading...</div>; // Handle the loading state
 
