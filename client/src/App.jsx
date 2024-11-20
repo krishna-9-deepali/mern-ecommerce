@@ -22,6 +22,7 @@ import { Skeleton } from "./components/ui/skeleton";
 import PaypalReturnPage from "./pages/shoping-view/paypal-return";
 import PaymentSuccessPage from "./pages/shoping-view/payment-success";
 import SearchProducts from "./pages/shoping-view/search";
+import { ClipLoader } from "react-spinners";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useSelector(
@@ -36,9 +37,14 @@ function App() {
     // }
     dispatch(checkAuth(token));
   }, [dispatch]);
-  // if (isLoading) return <div>Loading...</div>; // Handle the loading state
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <ClipLoader />
+      </div>
+    ); // Handle the loading state
 
-  if (isLoading) return <Skeleton className="w-[800] bg-black h-[600px]" />;
+  // if (isLoading) return <Skeleton className="w-[800] bg-black h-[600px]" />;
 
   console.log(isLoading, user, isAuthenticated, "<--isAuthenticated");
 
